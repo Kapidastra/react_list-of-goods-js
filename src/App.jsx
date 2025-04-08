@@ -19,11 +19,11 @@ export const goodsFromServer = [
 const SORT_BY_ALPHABET = 'alphabet';
 const SORT_BY_LENGTH = 'length';
 
-function getPreparedGoods(goods, { sortField, isReversed }) {
+function sortGoods(goods, { sortField, isReversed }) {
   let preperedGoods = [...goods];
 
   if (sortField === SORT_BY_LENGTH) {
-    preperedGoods = preperedGoods.sort(
+    preperedGoods = [...preperedGoods].sort(
       (good1, good2) => good1.length - good2.length,
     );
   }
@@ -43,7 +43,7 @@ export const App = () => {
   const [sortField, setSortField] = useState('');
   const [isReversed, setIsReversed] = useState(false);
 
-  const visibleGoods = getPreparedGoods(goodsFromServer, {
+  const visibleGoods = sortGoods(goodsFromServer, {
     sortField,
     isReversed,
   });
