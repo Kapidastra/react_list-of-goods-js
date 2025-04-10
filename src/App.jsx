@@ -79,7 +79,10 @@ export const App = () => {
             'is-light': !isReversed,
             'is-active': isReversed,
           })}
-          onClick={() => setIsReversed(prev => !prev)}
+          onClick={() => {
+            setSortField('');
+            setIsReversed(true);
+          }}
         >
           Reverse
         </button>
